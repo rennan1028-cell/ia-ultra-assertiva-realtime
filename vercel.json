@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "name": "ia-ultra-assertiva-realtime",
+  "builds": [
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "src/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/src/(.*)",
+      "dest": "/src/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/public/index.html"
+    }
+  ],
+  "env": {
+    "FOREX_API_KEY": "944ccf40bb789ad27f80a9325cac04f3"
+  },
+  "headers": [
+    {
+      "source": "/src/(.*\\.js)$",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        }
+      ]
+    }
+  ]
+}
